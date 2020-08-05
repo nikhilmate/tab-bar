@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab Bar</title>
+    <style>
+        *,
+        *:after,
+        *:before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #quiz-app {
+            height: calc(100vh - 100px);
+            background-color: #282c34;
+            margin: 50px auto;
+            max-width: 924px;
+            overflow: auto;
+            color: #FFF;
+            font-family: Arial, Helvetica, sans-serif;
+            border-radius: 8px;
+            font-stretch: normal;
+            letter-spacing: normal;
+            font-size: 16px;
+            padding: 20px;
+        }
+
+        .tab-wrap {
+            display: flex;
+        }
+
+        .comn-tab {
+            display: inline-flex;
+            flex: 1;
+            padding: 15px;
+            cursor: pointer;
+        }
+
+        .comn-tab.active {
+            color: tomato;
+        }
+
+        .comn-content {
+            display: none;
+        }
+
+        .comn-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="quiz-app">
+        <div class="tab-wrap">
+            <a tn-tab-id="tab1" class="tab comn-tab">Tab 1</a>
+            <a tn-tab-id="tab2" class="tab comn-tab">Tab 2</a>
+        </div>
+        <div class="content-wrap">
+            <div tn-tab-target="tab1" class="content comn-content">
+                <h1 class="content-h1">Tab 1111111111</h1>
+            </div>
+            <div tn-tab-target="tab2" class="content comn-content">
+                <h1 class="content-h1">Tab 2222222222</h1>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/tabbar.js"></script>
+    <script type="text/Javascript">
+
+        var tabInit = new TabToggle({
+            'defaultTab': 'tab1',
+        });
+        tabInit.init();
+        tabInit.attachCallBack(function(targetEl){
+            console.log(targetEl);
+        });
+
+    </script>
+</body>
+
+</html>
